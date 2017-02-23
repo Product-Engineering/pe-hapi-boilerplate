@@ -1,0 +1,21 @@
+box: node:6.9.1
+build:
+  steps:
+    - npm-install
+    - script:
+        name: Run unit tests
+        code: |
+          npm run unit-test
+deploy:
+  steps:
+    - heroku-deploy:
+        key: $HEROKU_KEY
+        key-name: DEPLOY_KEY
+        user: $HEROKU_USER
+        app-name: $HEROKU_APP_NAME
+  after-steps:
+    - slack-notifier:
+        url: $SLACK_WEBHOOK_URL
+        channel: deployments
+        username: werckerApi
+        branch: master

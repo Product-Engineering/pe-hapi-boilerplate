@@ -1,0 +1,9 @@
+node_modules
+.tmp
+.env
+.DS_Store
+.wercker
+npm-debug.log*
+config/local.js
+test/fixtures/*
+src/app/v1/api/packages/google_creds.json
